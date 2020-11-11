@@ -2,7 +2,6 @@ import React from 'react';
 import * as actions from 'actions';
 import { Link } from 'react-router-dom';
 import { RentalManageCard } from './RentalManageCard';
-import { RentalManageModal } from './RentalManageModal';
 import { ToastContainer, toast } from 'react-toastify';
 
 export class RentalManage extends React.Component {
@@ -29,7 +28,7 @@ export class RentalManage extends React.Component {
 
   renderRentalCards(rentals) {
     return rentals.map((rental, index) =>
-     <RentalManageCard modal={<RentalManageModal bookings={rental.bookings}/>}
+     <RentalManageCard 
                        key={index}
                        rental={rental}
                        rentalIndex={index}

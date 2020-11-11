@@ -54,14 +54,7 @@ function withGeocode(WrappedComponent) {
       this.getGeocodedLocation();
     }
 
-    componentDidUpdate() {
-      if (this.props.isReloading) {
-        this.getGeocodedLocation();
-      }
-    }
-
     updateCoordinates(coordinates) {
-      this.props.mapLoaded();
 
       this.setState({
         coordinates,
@@ -101,7 +94,6 @@ function withGeocode(WrappedComponent) {
             this.updateCoordinates(coordinates);
           },
           (error) => {
-            this.props.mapLoaded();
             this.setState({isLocationLoaded: true, isError: true});
           });
       }
@@ -116,5 +108,3 @@ function withGeocode(WrappedComponent) {
 }
 
 export const MapWithGeocode = withScriptjs(withGoogleMap(withGeocode(MapComponent)));
-
-

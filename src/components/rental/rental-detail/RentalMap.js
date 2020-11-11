@@ -1,36 +1,19 @@
 import React from 'react';
 import { MapWithGeocode} from 'components/map/GoogleMap';
-import { connect } from 'react-redux';
 
-import * as actions from 'actions';
-
-class RentalMap extends React.Component {
-
-  reloadMapFinish() {
-    this.props.dispatch(actions.reloadMapFinish());
-  }
+export class RentalMap extends React.Component {
 
   render() {
-    const { location, map: {isReloading} } = this.props;
+    const location  = this.props.location;
 
     return (
       <MapWithGeocode
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW9tFSqG2mA0ym2NluRBVGZ6tPr8xbwRM&libraries=geometry,drawing,places"
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbjSe8iiJJ4Iv7cWo9pepIVTKn-gBl0J0&libraries=geometry,drawing,places"
         loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `405px` }} />}
+        containerElement={<div style={{ height: `360px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
         location={location}
-        isReloading={isReloading}
-        mapLoaded={() => this.reloadMapFinish()}
       />
     )
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    map: state.map
-  }
-}
-
-export default connect(mapStateToProps)(RentalMap);
